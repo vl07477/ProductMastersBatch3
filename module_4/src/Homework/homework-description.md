@@ -1,6 +1,6 @@
 EASY
 
-Создайте интерфейс **Printer<T>**, который содержит метод **void print(T value)**.
+Создайте интерфейс **Homework.easy.Printer<T>**, который содержит метод **void print(T value)**.
 Реализуйте его в классе StringPrinter b, который будет печатать строки в консоль.
 
 MEDIUM
@@ -13,7 +13,7 @@ MEDIUM
         •	Переопределить метод toString(), чтобы удобно выводить данные о пользователе.
     - UserRepository
     - UserDataCloudDataSource
-Проверить логику в lesson.Main. 
+Проверить логику в lesson.Homework.easy.Main. 
 
 HARD
 Нужно создать обобщенный класс Box<T>, который представляет контейнер для хранения одного объекта любого типа.
