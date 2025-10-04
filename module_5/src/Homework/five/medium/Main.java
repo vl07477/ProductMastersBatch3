@@ -1,4 +1,5 @@
 package Homework.five.medium;
+
 import java.util.ArrayList;
 import java.util.List;
 public class Main {
@@ -15,7 +16,11 @@ public class Main {
         }
         DayOfWeek today = DayOfWeek.Saturday;
         System.out.println("Сегодня: " + today.getRuName());
-        System.out.println("Выходной? " + isWeekend(today));
+        if (isWeekend(today)) {
+            System.out.println("Выходной: Да!");
+        } else {
+            System.out.println("Выходной: Нет!");
+        }
     }
 
     public static boolean isWeekend(DayOfWeek day) {
@@ -23,3 +28,4 @@ public class Main {
         return num == 6 || num == 7;
     }
 }
+
