@@ -19,7 +19,7 @@ public class Main {
         if (isWeekend(today)) {
             System.out.println("Выходной: Да!");
         } else {
-            System.out.println("Выходной: Нет!");
+            System.out.println("Выходной: нет!");
         }
     }
 
