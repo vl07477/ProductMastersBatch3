@@ -1,8 +1,12 @@
 package Homework.seven;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.*;
 import java.util.Optional;
 
-
+@Getter
+@Setter
 public class TwitterConsoleApp {
     private static final Scanner scanner = new Scanner(System.in);
 
