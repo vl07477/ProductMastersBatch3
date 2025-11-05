@@ -1,7 +1,6 @@
 package kz.Vlada.servlet;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet("/attendance")
 public class AttendanceServlet extends HttpServlet {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
@@ -49,6 +47,8 @@ public class AttendanceServlet extends HttpServlet {
                 String name = rs.getString("name");
                 String groupName = rs.getString("group_name");
                 boolean isAttended = rs.getBoolean("is_attended");
+
+                System.out.println("Студент: id=" + id + ", name=" + name + ", group=" + groupName + ", attended=" + isAttended);
 
                 out.println("<tr>");
                 out.println("<td>" + id + "</td>");

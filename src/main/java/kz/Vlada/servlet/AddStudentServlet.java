@@ -1,8 +1,10 @@
 package kz.Vlada.servlet;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.*;
@@ -12,7 +14,7 @@ public class AddStudentServlet extends HttpServlet {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "your_password"; // замените на свой пароль
+    private static final String PASSWORD = "61677127vs"; // замени на свой пароль
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,9 +29,8 @@ public class AddStudentServlet extends HttpServlet {
 
         String sql = "INSERT INTO students (name, group_name, is_attended) VALUES (?, ?, ?)";
 
-        // Загружаем драйвер PostgreSQL
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver"); // загружаем драйвер
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             throw new ServletException("PostgreSQL Driver not found", e);
@@ -43,12 +44,35 @@ public class AddStudentServlet extends HttpServlet {
             stmt.setBoolean(3, isAttended);
             stmt.executeUpdate();
 
-            // Перенаправляем на страницу посещаемости после успешного добавления
+            // Перенаправляем на страницу посещаемости
             response.sendRedirect(request.getContextPath() + "/attendance");
 
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Ошибка при сохранении данных.");
+        }
+    }
+
+    // Обработка GET-запроса — просто выводим HTML-форму
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        try (var out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html lang='ru'>");
+            out.println("<head><meta charset='UTF-8'><title>Добавить студента</title></head>");
+            out.println("<body>");
+            out.println("<h1>Добавить студента</h1>");
+            out.println("<form action='" + request.getContextPath() + "/addStudent' method='post'>");
+            out.println("Имя: <input type='text' name='name' required><br>");
+            out.println("Группа: <input type='text' name='groupName' required><br>");
+            out.println("Присутствовал: <input type='checkbox' name='isAttended'><br>");
+            out.println("<button type='submit'>Добавить</button>");
+            out.println("</form>");
+            out.println("</body></html>");
         }
     }
 }
