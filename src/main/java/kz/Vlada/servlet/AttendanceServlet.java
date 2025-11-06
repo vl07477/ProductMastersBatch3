@@ -19,12 +19,19 @@ public class AttendanceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        resp.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+
+        String query = """
+                SELECT s.id, s.name, g.name AS group_name, s.is_attended
+                FROM students s
+                LEFT JOIN groups g ON s.group_name_id = g.id
+                ORDER BY s.id
+                """;
 
         try (PrintWriter out = resp.getWriter();
              Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM students ORDER BY id")) {
+             ResultSet rs = stmt.executeQuery(query)) {
 
             out.println("<!DOCTYPE html>");
             out.println("<html lang='ru'>");
@@ -32,7 +39,8 @@ public class AttendanceServlet extends HttpServlet {
             out.println("<meta charset='UTF-8'>");
             out.println("<title>Список студентов</title>");
             out.println("<style>");
-            out.println("table { border-collapse: collapse; width: 60%; }");
+            out.println("body { font-family: Arial, sans-serif; margin: 30px; }");
+            out.println("table { border-collapse: collapse; width: 70%; margin-top: 20px; }");
             out.println("th, td { border: 1px solid #000; padding: 8px; text-align: left; }");
             out.println("th { background-color: #f2f2f2; }");
             out.println("</style>");
@@ -53,7 +61,7 @@ public class AttendanceServlet extends HttpServlet {
                 out.println("<tr>");
                 out.println("<td>" + id + "</td>");
                 out.println("<td>" + name + "</td>");
-                out.println("<td>" + groupName + "</td>");
+                out.println("<td>" + (groupName != null ? groupName : "-") + "</td>");
                 out.println("<td>" + (isAttended ? "Да" : "Нет") + "</td>");
                 out.println("</tr>");
             }

@@ -14,7 +14,7 @@ public class AddStudentServlet extends HttpServlet {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "61677127vs"; // замени на свой пароль
+    private static final String PASSWORD = "61677127vs";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -24,36 +24,56 @@ public class AddStudentServlet extends HttpServlet {
         String groupName = request.getParameter("groupName");
         String isAttendedParam = request.getParameter("isAttended");
 
-        boolean isAttended = "on".equalsIgnoreCase(isAttendedParam) ||
-                "true".equalsIgnoreCase(isAttendedParam);
-
-        String sql = "INSERT INTO students (name, group_name, is_attended) VALUES (?, ?, ?)";
+        boolean isAttended = "on".equalsIgnoreCase(isAttendedParam) || "true".equalsIgnoreCase(isAttendedParam);
 
         try {
-            Class.forName("org.postgresql.Driver"); // загружаем драйвер
+            Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
             throw new ServletException("PostgreSQL Driver not found", e);
         }
 
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
 
-            stmt.setString(1, name);
-            stmt.setString(2, groupName);
-            stmt.setBoolean(3, isAttended);
-            stmt.executeUpdate();
+            // 1️⃣ Проверяем — есть ли такая группа, если нет, создаем новую
+            int groupId = -1;
+            String checkGroupSql = "SELECT id FROM groups WHERE name = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkGroupSql)) {
+                checkStmt.setString(1, groupName);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next()) {
+                    groupId = rs.getInt("id");
+                }
+            }
 
-            // Перенаправляем на страницу посещаемости
+            if (groupId == -1) {
+                String insertGroupSql = "INSERT INTO groups (name) VALUES (?) RETURNING id";
+                try (PreparedStatement insertGroupStmt = conn.prepareStatement(insertGroupSql)) {
+                    insertGroupStmt.setString(1, groupName);
+                    ResultSet rs = insertGroupStmt.executeQuery();
+                    if (rs.next()) {
+                        groupId = rs.getInt("id");
+                    }
+                }
+            }
+
+            // 2️⃣ Добавляем студента с найденным group_id
+            String insertStudentSql = "INSERT INTO students (name, group_name_id, is_attended) VALUES (?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertStudentSql)) {
+                stmt.setString(1, name);
+                stmt.setInt(2, groupId);
+                stmt.setBoolean(3, isAttended);
+                stmt.executeUpdate();
+            }
+
+            // 3️⃣ Перенаправляем обратно на список
             response.sendRedirect(request.getContextPath() + "/attendance");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Ошибка при сохранении данных.");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Ошибка при сохранении данных: " + e.getMessage());
         }
     }
 
-    // Обработка GET-запроса — просто выводим HTML-форму
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

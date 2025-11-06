@@ -4,28 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0340bb95-4b2a-490f-bffd-374f62aa4660" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lombok_1_18_42.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="0340bb95-4b2a-490f-bffd-374f62aa4660" name="Changes" comment="9 - HW (update v1)">
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/Vlada/servlet/AddStudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/Vlada/servlet/AddStudentServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kz/Vlada/servlet/AttendanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/Vlada/servlet/AttendanceServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/kz/Vlada/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kz/Vlada/servlet/AddStudentServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/Vlada/servlet/AddStudentServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kz/Vlada/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kz/Vlada/servlet/AttendanceServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-study-project.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-study-project.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-study-project/WEB-INF/classes/kz/Vlada/servlet/AddStudentServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-study-project/WEB-INF/classes/kz/Vlada/servlet/AddStudentServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-study-project/WEB-INF/classes/kz/Vlada/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-study-project/WEB-INF/classes/kz/Vlada/servlet/AttendanceServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-kz.Vlada.AppTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/kz.Vlada.AppTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/kz/Vlada/AppTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +93,19 @@
       <option name="presentableId" value="Default" />
       <updated>1762177269806</updated>
     </task>
+    <task id="LOCAL-00001" summary="9 - HW (update v1)">
+      <option name="closed" value="true" />
+      <created>1762333607586</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762333607586</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="9 - HW (update v1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="9 - HW (update v1)" />
   </component>
 </project>
