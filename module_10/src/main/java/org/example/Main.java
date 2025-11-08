@@ -3,18 +3,14 @@ package org.example;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.math.BigDecimal;
-
 public class Main {
     public static void main(String[] args) {
+        // Инициализируем Spring-контекст
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        ApplicationContext context
-                = new AnnotationConfigApplicationContext(DependencyInjectorConfig.class);
+        // Внедряем конкретный бин по имени
+        GreetingService greetingService = (GreetingService) context.getBean("russianGreetingService");
 
-        OrderService orderService = context.getBean(OrderService.class);
-        orderService.makeOrder(BigDecimal.valueOf(15));
-
-        OrderService orderServiceSecond = context.getBean(OrderService.class);
-        orderServiceSecond.makeOrder(BigDecimal.valueOf(15));
+        greetingService.sayHello(); // Выведет: Привет!
     }
 }

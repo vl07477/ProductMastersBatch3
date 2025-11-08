@@ -19,14 +19,15 @@
     </properties>
 
     <dependencies>
-        <!-- Servlet API -->
+        <!-- JUnit -->
         <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>3.8.1</version>
-        <scope>test</scope>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
         </dependency>
 
+        <!-- Servlet API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -40,8 +41,14 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
-    </dependencies>
 
+        <!-- ✅ Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.1.21</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>maven-study-project</finalName>
