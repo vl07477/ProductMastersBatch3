@@ -10,13 +10,15 @@ public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    // Внедрение зависимостей через конструктор
     public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
     public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
+        return movieRepository.getAllMovies();
+    }
+
+    public List<Movie> findByDirector(String director) {
+        return movieRepository.findByDirector(director);
     }
 }
-

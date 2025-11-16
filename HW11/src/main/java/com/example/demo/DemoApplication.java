@@ -10,3 +10,7 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 }
+
+
+//http://localhost:8080/api/movies/all весь список фильмов
+//http://localhost:8080/api/movies/by-director?name=Christopher+Nolan фильтр по режиссеру Nolan

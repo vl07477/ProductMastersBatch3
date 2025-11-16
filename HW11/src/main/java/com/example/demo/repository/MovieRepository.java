@@ -4,5 +4,6 @@ import com.example.demo.model.Movie;
 import java.util.List;
 
 public interface MovieRepository {
-    List<Movie> findAll();
+    List<Movie> getAllMovies();
+    List<Movie> findByDirector(String director);
 }
