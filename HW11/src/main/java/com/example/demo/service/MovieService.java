@@ -21,4 +21,8 @@ public class MovieService {
     public List<Movie> findByDirector(String director) {
         return movieRepository.findByDirector(director);
     }
+
+    public void addMovie(Movie movie) {
+        movieRepository.addMovie(movie);
+    }
 }

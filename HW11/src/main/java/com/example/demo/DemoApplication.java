@@ -12,5 +12,14 @@ public class DemoApplication {
 }
 
 
-//http://localhost:8080/api/movies/all весь список фильмов
-//http://localhost:8080/api/movies/by-director?name=Christopher+Nolan фильтр по режиссеру Nolan
+//http://localhost:8080/api/movies/all весь список фильмов easy
+//http://localhost:8080/api/movies/by-director?name=Christopher+Nolan фильтр по режиссеру Nolan medium
+
+/*
+curl -X POST http://localhost:8080/api/movies/add \
+  -H "Content-Type: application/json" \
+  -d '{"title":"film1","director":"Unknown","year":2026}'
+
+  курл для добавления фильма метод Post - hard
+
+ */
